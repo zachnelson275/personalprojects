@@ -34,12 +34,13 @@ while ammo > 0:
     hits_per_rr += 1
     if ammo == 0:
         if hits_per_rr >= (starting_ammo * 0.2875):
-            ammo = math.ceil(starting_ammo * 0.6)
+            ammo = math.ceil(hits_per_rr * 0.6)
             hits_per_rr = 0
             rr_count += 1
     
     # max ammo 
     if count >= 46:
+        print("Hit max ammo")
         break
 
         
