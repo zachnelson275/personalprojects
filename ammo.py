@@ -17,11 +17,11 @@ while ammo > 0:
     count += 1
     
     # triple tap
-    # tt += 1
-    # if tt == 3:
-    #     ammo += 1
-    #     tt_count += 1
-    #     tt = 0
+    tt += 1
+    if tt == 3:
+        ammo += 1
+        tt_count += 1
+        tt = 0
         
     # fourth times the charm
     fttc += 1
@@ -31,17 +31,17 @@ while ammo > 0:
         fttc = 0
     
     # weewoo rounds
-    hits_per_rr += 1
-    if ammo == 0:
-        if hits_per_rr >= (starting_ammo * 0.2875):
-            ammo = math.ceil(hits_per_rr * 0.6)
-            hits_per_rr = 0
-            rr_count += 1
+    # hits_per_rr += 1
+    # if ammo == 0:
+    #     if hits_per_rr >= (starting_ammo * 0.2875):
+    #         ammo = math.ceil(hits_per_rr * 0.6)
+    #         hits_per_rr = 0
+    #         rr_count += 1
     
     # max ammo 
-    if count >= 46:
-        print("Hit max ammo")
-        break
+    # if count >= 46:
+    #     print("Hit max ammo")
+    #     break
 
         
 print(f"Total shots:        {count}")
