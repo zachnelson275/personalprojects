@@ -1,7 +1,7 @@
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.sql.Timestamp;
 
 public class TDList {
     private int size;
@@ -52,6 +52,9 @@ public class TDList {
     }
 
     public void DisplayItems(){
-        
+        for (Item item : items) {
+            item.DisplayDetails();
+            System.out.println();
+        }
     }
 }
