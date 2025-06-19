@@ -45,6 +45,13 @@ public class TDList {
     AddItem(item);
     size += 1;
     System.out.println("Item successfully created and added!");
-}
+    }
 
+    public int GetSize() {
+        return size;
+    }
+
+    public void DisplayItems(){
+        
+    }
 }
