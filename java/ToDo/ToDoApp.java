@@ -7,7 +7,7 @@ public class ToDoApp {
 
         myList.BuildItemFromInput(scanner);
 
-        // If you plan more input, do it here
+        // More input with scanner goes here
 
         scanner.close();  
     }
