@@ -49,4 +49,8 @@ public class Item {
     public void AddDetail(Detail detail) {
         details.add(detail);
     }
+
+    public String GetName() {
+        return this.name;
+    }
 }
