@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class TDList {
     private int size;
-    private List<Item> items;
+    private final List<Item> items;
 
     public TDList() {
         this.size = 0;
@@ -55,6 +55,23 @@ public class TDList {
         for (Item item : items) {
             item.DisplayDetails();
             System.out.println();
+        }
+    }
+
+    public void DeleteItem(Scanner scanner) {
+        int itemIndex = 0;
+        for (Item item : items) {
+            itemIndex += 1;
+            String printItem = String.format("%s - %s", itemIndex, item.GetName());
+            System.out.println(printItem);
+        }
+        System.out.print("Which item would you like to delete?  ");
+
+        int choiceIndex = scanner.nextInt() - 1;
+        try {
+            items.remove(choiceIndex);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
