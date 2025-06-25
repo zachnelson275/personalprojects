@@ -53,7 +53,7 @@ public class TDList {
 
     public void DisplayItems(){
         for (Item item : items) {
-            item.DisplayDetails();
+            item.DisplayInfo();
             System.out.println();
         }
     }
@@ -73,5 +73,21 @@ public class TDList {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public void AddDefaultItems() {
+        Item item1 = new Item("Buy groceries", new Timestamp(System.currentTimeMillis()), 
+                              Timestamp.valueOf("2023-10-15 18:00:00"), null, 
+                              Timestamp.valueOf("2023-10-15 17:00:00"), false);
+        item1.AddDetail(new Detail("Milk"));
+        item1.AddDetail(new Detail("Eggs"));
+        AddItem(item1);
+
+        Item item2 = new Item("Complete project report", new Timestamp(System.currentTimeMillis()), 
+                              Timestamp.valueOf("2023-10-20 23:59:59"), null, 
+                              Timestamp.valueOf("2023-10-19 12:00:00"), false);
+        item2.AddDetail(new Detail("Draft the introduction"));
+        item2.AddDetail(new Detail("Review with team"));
+        AddItem(item2);
     }
 }

@@ -22,7 +22,7 @@ public class Item {
         this.details = new ArrayList<>();
     }
 
-    public void DisplayDetails() {
+    public void DisplayInfo() {
         // Format info for print
         String createDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(timeCreated);
         String finishDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(finishByTime);
