@@ -7,7 +7,7 @@ public class Item {
     private final String name;
     private final Timestamp timeCreated;
     private Timestamp finishByTime;
-    private final Timestamp timeCompleted;
+    private Timestamp timeCompleted;
     private Timestamp reminderTimestamp;
     private boolean isDone;
     private List<Detail> details;
@@ -52,5 +52,17 @@ public class Item {
 
     public String GetName() {
         return this.name;
+    }
+
+    public boolean GetIsDone() {
+        return this.isDone;
+    }
+
+    public void SetIsDone(boolean done) {
+        this.isDone = done;
+    }
+
+    public void SetTimeCompleted(Timestamp timeCompleted) {
+        this.timeCompleted = timeCompleted;
     }
 }

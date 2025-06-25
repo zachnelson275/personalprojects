@@ -1,5 +1,6 @@
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -74,6 +75,43 @@ public class TDList {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    public void CompleteItem(Scanner scanner) {
+    if (items.isEmpty()) {
+        System.out.println("No items to complete.");
+        return;
+    }
+
+    // Loop through items, then number and print them
+    int itemIndex = 1;
+    for (Item item : items) {
+        String printItem = String.format("%d - %s", itemIndex, item.GetName());
+        System.out.println(printItem);
+        itemIndex++;
+    }
+
+    System.out.print("Which item would you like to mark as complete? ");
+
+    try {
+        int choiceIndex = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        Item chosenItem = items.get(choiceIndex);
+        if (!chosenItem.GetIsDone()) {
+            chosenItem.SetIsDone(true);
+            chosenItem.SetTimeCompleted(new Timestamp(System.currentTimeMillis()));
+            System.out.println("Marked \"" + chosenItem.GetName() + "\" as completed.");
+        } else {
+            System.out.println("That item is already marked as completed.");
+        }
+    } catch (IndexOutOfBoundsException e) {
+        System.out.println("Invalid choice: index out of bounds.");
+    } catch (InputMismatchException e) {
+        System.out.println("Invalid input: please enter a number.");
+        scanner.nextLine(); // clear the bad input
+    }
+}
+
 
     public void AddDefaultItems() {
         Item item1 = new Item("Buy groceries", new Timestamp(System.currentTimeMillis()), 
