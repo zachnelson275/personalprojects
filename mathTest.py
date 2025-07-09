@@ -22,7 +22,23 @@ def funD(n):
         return 5
     return funD(n-1) + (funD(n-2)**2)
 
-print (f"A(10): {funA(10)}")
-print (f"B(10): {funB(10)}")
-print (f"C(10): {funC(10)}")
-print (f"4(10): {funD(10)}")
+# print (f"A(10): {funA(10)}")
+# print (f"B(10): {funB(10)}")
+# print (f"C(10): {funC(10)}")
+# print (f"4(10): {funD(10)}")
+
+def euclid(x, y):
+    """
+    Implements the euclid algorithm to find the GCD
+    of x and y in linear combination form. This
+    function returns a tuple (gcd, s, t) where
+    gcd = s*x + t*y.
+    """
+    if x == 0:
+        return (y, 0, 1)
+    (gcd, s, t) = euclid(y % x, x)
+    return (gcd, t - (y // x) * s, s)
+
+# print(euclid(19,28560))
+
+print((4099**9019) % 28907)
