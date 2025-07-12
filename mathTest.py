@@ -41,4 +41,14 @@ def euclid(x, y):
 
 # print(euclid(19,28560))
 
-print((4099**9019) % 28907)
+# print((4099**9019) % 28907)
+
+from math import factorial
+def P(n, r):
+    return factorial(n) // factorial(n - r)
+def C(n, r):
+    return factorial(n) // (factorial(r) * factorial(n - r))
+
+print(P(100, 15))
+print()
+print(C(1000, 100))
