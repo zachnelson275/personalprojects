@@ -58,5 +58,13 @@ print(arr_4)
 print(arr[arr_4])
 
 print(arr_2d[arr_2d <= 30])
-masked_arr_2d = np.where(arr_2d < 30, arr_2d, )
-print(masked_arr_2d)
+# masked_arr_2d = np.where(arr_2d < 30, arr_2d, )
+# print(masked_arr_2d)
+
+arr_20 = np.arange(0, 20)
+print(arr_20 / 20)
+
+print(np.sum(arr_20))
+print(np.std(arr_20))
+
+print(arr_2d.sum(axis = 0))
