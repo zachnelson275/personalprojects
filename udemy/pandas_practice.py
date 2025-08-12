@@ -63,3 +63,20 @@ df[df['W'] > 0] # Returns data frame where bool values = True
 # conditionals to filter data even more
 
 print(df[df['W'] > 0][['X', 'Y']])
+
+df[(df['W'] > 0) & (df['Y'] > 1)] # Multiple conditions using and
+df[(df['W'] > 0) | (df['Y'] > 1)] # Multiple conditions using or
+# (df['W'] > 0) | (df['Y'] > 1) 
+# This is a series of bool values, which can be passed
+# into the original data frame to get all rows where either
+# condition evaluates to true
+
+df.reset_index() # Resets index of the data frame
+# Useful for turning the index into a column
+# Only happens in place, doesn't change the original data frame
+print(df)
+
+newind = 'CA NY WY OR TX'.split()
+df['States'] = newind
+df.set_index('States', inplace=True)
+print(df)
