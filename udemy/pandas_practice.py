@@ -78,5 +78,8 @@ print(df)
 
 newind = 'CA NY WY OR TX'.split()
 df['States'] = newind
-df.set_index('States', inplace=True)
+df.set_index('States', inplace=True) # Set index to a specific column
+# All pandas edits need to have the parameter inplace set to True for it to 
+# apply to the data frame. Use regular methods without inplace to test output
+# before applying the changes
 print(df)
