@@ -83,3 +83,20 @@ df.set_index('States', inplace=True) # Set index to a specific column
 # apply to the data frame. Use regular methods without inplace to test output
 # before applying the changes
 print(df)
+
+# Index Levels
+outside = ['G1', 'G1', 'G1', 'G2', 'G2', 'G2']
+inside = [1, 2, 3, 1, 2, 3]
+hier_index = list(zip(outside, inside))
+hier_index = p.MultiIndex.from_tuples(hier_index)
+
+dfd = p.DataFrame(randn(6,2), hier_index, ['A', 'B'])
+dfd.loc['G1'] # Returns sub dataframe of subindex G1
+dfd.loc['G1'].loc[2] # Returns row 2 of subindex G1
+dfd.index.names = ['Groups', 'Num'] # Set names of index levels
+print(dfd)
+
+dfd.loc['G2'].loc[2]['B'] 
+# Returns value of column B, row 2, subindex G2
+dfd.xs('1', level = 'Num') 
+# Cross section method to return all values of 1 at level Num
