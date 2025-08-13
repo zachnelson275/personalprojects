@@ -98,5 +98,15 @@ print(dfd)
 
 dfd.loc['G2'].loc[2]['B'] 
 # Returns value of column B, row 2, subindex G2
-dfd.xs('1', level = 'Num') 
+# dfd.xs('1', level = 'Num') 
 # Cross section method to return all values of 1 at level Num
+
+d = {'a':[1, 2, np.nan], 'b':[5, np.nan, np.nan], 'c':[1, 2, 3]}
+dft = p.DataFrame(d)
+print(dft)
+print(dft.dropna(axis = 1)) # Drops columns with any null values
+print(dft.dropna(thresh = 2))  # Drops rows with 2 or more non-null values
+print(dft.dropna(subset = ['a'])) # Drops rows where column a has null values
+
+print(dft.fillna('FILL VALUE')) # Fills null values with parameter
+print(dft['a'].fillna(value=dft['a'].mean())) # Fills null values with mean of column A
