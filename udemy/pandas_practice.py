@@ -111,6 +111,7 @@ print(dft.dropna(subset = ['a'])) # Drops rows where column a has null values
 print(dft.fillna('FILL VALUE')) # Fills null values with parameter
 print(dft['a'].fillna(value=dft['a'].mean())) # Fills null values with mean of column A
 
+
 ### Group By ###
 data = {'Company':['GOOG', 'GOOG', 'MSFT', 'MSFT', 'FB', 'FB'],
         'Person':['Sam', 'Charlie', 'Amy', 'Vanessa', 'Carl', 'Sarah'],
@@ -125,6 +126,7 @@ byComp.describe() # Returns descriptive statistics of each group
 byComp.describe().transpose() # Transpose the output for better readability
 byComp.describe().transpose()['FB'] # Returns descriptive statistics of FB group
 
+
 ### Concatenation ###
 df1 = p.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'], 'B' : ['B0', 'B1', 'B2', 'B3'], 'C' : ['C0', 'C1', 'C2', 'C3'], 'D' : ['D0', 'D1', 'D2', 'D3']}, index = [0, 1, 2, 3])
 df2 = p.DataFrame({'A': ['A4', 'A5', 'A6', 'A7'], 'B' : ['B4', 'B5', 'B6', 'B7'], 'C' : ['C4', 'C5', 'C6', 'C7'], 'D' : ['D4', 'D5', 'D6', 'D7']}, index = [4, 5, 6, 7])
@@ -138,3 +140,30 @@ merged = p.merge(left, right, how='inner', on='key') # Inner is default merge me
 print(merged)
 
 # Join is the same thing as merge, except it uses the index rather than a key column
+
+dfo = p.DataFrame({'col1':[1,2,3,4], 'col2':[444,555,666,444], 'col3':['abc','def','ghi','xyz']})
+dfo['col2'].unique() # Returns unique values in column col2
+dfo['col2'].nunique() # Returns number of unique values in column col2
+# can also use len(dfo['col2'].unique()) to get the same result
+dfo['col2'].value_counts() # Returns a series of unique values and their counts
+dfo[dfo['col1'] > 2] # Returns bool series of values where col1 > 2
+dfo[(dfo['col1'] > 2) & (dfo['col2'] == 444)] # Returns bool series of values where col1 > 2 and col2 == 444
+
+def times2(x):
+    return x * 2
+print(dfo['col1'].apply(times2)) # Applies function to each value in col1
+dfo['col2'].apply(lambda x: x * 2) # Applies lambda function to each value in col2
+dfo.columns # Returns column names as list
+dfo.index # Returns index with start, stop, and step values
+dfo.sort_values('col2', ascending=False) # Sorts values in col2 in descending order
+dfo.isnull() # Returns a boolean dataframe indicating null values
+
+data = {'A': ['foo', 'foo', 'foo', 'bar', 'bar', 'bar'],
+        'B': ['one', 'one', 'two', 'two', 'one', 'one'],
+        'C': ['x', 'y', 'x', 'y', 'x', 'y'],
+        'D': [1, 3, 2, 5, 4, 1]}
+dfe = p.DataFrame(data)
+print(dfe)
+print()
+print(dfe.pivot_table(values = 'D', index = ['A', 'B'], columns = 'C'))
+
