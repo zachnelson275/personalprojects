@@ -167,3 +167,19 @@ print(dfe)
 print()
 print(dfe.pivot_table(values = 'D', index = ['A', 'B'], columns = 'C'))
 
+dfc = p.read_csv('example')  # Reads a CSV file into a DataFrame
+dfc.to_csv('My_Output', index=False) # Saves to file named My_Output in csv format
+print(dfc)
+
+dfe = p.read_excel('Excel_Sample.xlsx', sheet_name='Sheet1')  # Reads an Excel file into a DataFrame
+dfe.to_excel('Excel_Sample_Output.xlsx', sheet_name='Sheet1', index=False)  # Saves to an Excel file
+print(dfe)
+
+dfh = p.read_html('https://www.fdic.gov/bank/individual/failed/banklist.html')  # Reads HTML tables into a list of DataFrames
+print(dfh[0])
+
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///:memory:')
+dfc.to_sql('my_table', engine)  # Saves DataFrame to SQL table
+sqldf = p.read_sql('my_table', engine)  # Reads SQL table into a DataFrame
+print(sqldf)
