@@ -52,8 +52,14 @@ fp = flights.pivot_table(index = 'month', columns = 'year', values = 'passengers
 # g.map_upper(plt.scatter)
 # g.map_lower(sns.kdeplot, cmap = 'cool_d')
 
-g = sns.FacetGrid(tips, col = 'time', row = 'smoker')
+# g = sns.FacetGrid(tips, col = 'time', row = 'smoker')
 
-g.map(plt.scatter, 'total_bill', 'tip')
+# g.map(plt.scatter, 'total_bill', 'tip')
+
+
+## Regression Plots
+
+# sns.lmplot(x = 'total_bill', y = 'tip', data = tips, hue = 'sex', markers = ['o', 'v'])
+sns.lmplot(x = 'total_bill', y = 'tip', data = tips, col = 'day', hue = 'sex', aspect = 0.6, height = 8)
 
 plt.show()
